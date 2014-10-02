@@ -14,3 +14,8 @@ Feature: find out someone's favourite programming language based on github profi
     Given Earl has no repos on github
     When Randy wants to find out what is Earl's programming language of choice
     Then he sees we can't really tell
+
+  Scenario: attempt to run for user with no code repos
+    Given House has no code repos on github
+    When Willson wants to find out what is House's programming language of choice
+    Then he sees we can't really tell

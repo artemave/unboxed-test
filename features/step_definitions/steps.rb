@@ -3,7 +3,7 @@ Given(/^Walter published some Ruby code under his github account$/) do
     content: fixture('ruby.json')
 end
 
-When(/^.* wants to find out what is (Walter|Jon|Earl)'s programming language of choice$/) do |user|
+When(/^.* wants to find out what is (.*)'s programming language of choice$/) do |user|
   run_simple "fav_lang #{user.downcase}", fail_on_error=false
 end
 
@@ -28,4 +28,9 @@ end
 Then(/^he sees we can't really tell$/) do
   assert_exact_output("It is hard to say...\n", all_output)
   assert_exit_status 0
+end
+
+Given(/^House has no code repos on github$/) do
+  RestAssured::Double.create fullpath: '/users/house/repos',
+    content: fixture('house.json')
 end

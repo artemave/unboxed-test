@@ -6,6 +6,8 @@ class FavLang
       return NilLanguage.new
     end
 
-    data.map{|repo| repo["language"]}.compact.group_by{|itself| itself}.values.max_by(&:size).first
+    sorted_languages = data.map{|repo| repo["language"]}.compact.group_by{|itself| itself}.values.max_by(&:size)
+
+    sorted_languages ? sorted_languages.first : NilLanguage.new
   end
 end
