@@ -1,8 +1,6 @@
-require 'rest-client'
+require_relative 'github_api'
 
 class FavLang
-  GITHUB_API_URL = 'https://api.github.com'
-
   def initialize(argv, stdin=STDIN, stdout=STDOUT, stderr=STDERR, kernel=Kernel)
     @argv, @stdin, @stdout, @stderr, @kernel = argv, stdin, stdout, stderr, kernel
   end
@@ -11,7 +9,7 @@ class FavLang
     exitstatus = 0
     username = @argv.first
 
-    json = JSON.parse RestClient.get "%s/users/%s/repos" % [GITHUB_API_URL, username]
+    json = GitHubAPI.get_user_repos username
 
     language = json.map{|repo| repo["language"]}.group_by{|itself| itself}.values.max_by(&:size).first
 
