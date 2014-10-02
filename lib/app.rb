@@ -10,8 +10,8 @@ class App
     exitstatus = 0
     username = @argv.first
 
-    json = GitHubAPI.get_user_repos username
-    language = FavLang.calculate_from_repos json
+    data = GitHubAPI.get_user_repos username
+    language = FavLang.calculate_from_repos data
 
     @stdout.puts language
     @kernel.exit(exitstatus)
