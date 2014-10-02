@@ -14,6 +14,10 @@ class App
     language = FavLang.calculate_from_repos data
 
     @stdout.puts language
+  rescue GitHubAPI::UserNotFound
+    exitstatus = 1
+    @stderr.puts "User not found"
+  ensure
     @kernel.exit(exitstatus)
   end
 end
