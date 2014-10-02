@@ -23,4 +23,13 @@ describe FavLang do
       end
     end
   end
+
+  context 'user does not have code' do
+    let(:data) {[]}
+
+    it 'returns NilLanguage' do
+      language = FavLang.calculate_from_repos data
+      expect(language).to be_an_instance_of NilLanguage
+    end
+  end
 end
