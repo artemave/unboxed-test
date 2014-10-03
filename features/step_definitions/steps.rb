@@ -27,7 +27,7 @@ end
 
 Then(/^he sees we can't really tell$/) do
   assert_exact_output("It is hard to say...\n", all_output)
-  assert_exit_status 0
+  assert_exit_status 1
 end
 
 Given(/^House has no code repos on github$/) do

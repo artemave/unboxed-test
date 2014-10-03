@@ -13,12 +13,12 @@ class App
     data = GitHubAPI.get_user_repos username
     language = FavLang.calculate_from_repos data
 
-    output = if language.is_a? NilLanguage
-               "It is hard to say..."
-             else
-               language
-             end
-    @stdout.puts output
+    if language.is_a? NilLanguage
+      exitstatus = 1
+      @stderr.puts "It is hard to say..."
+    else
+      @stdout.puts language
+    end
 
   rescue GitHubAPI::UserNotFound
     exitstatus = 1
