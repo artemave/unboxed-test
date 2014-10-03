@@ -1,6 +1,6 @@
 Given(/^Walter published some Ruby code under his github account$/) do
   RestAssured::Double.create fullpath: '/users/walter/repos',
-    content: fixture('ruby.json')
+    content: fixture('repos_with_ruby.json')
 end
 
 When(/^.* wants to find out what is (.*)'s programming language of choice$/) do |user|
@@ -32,5 +32,5 @@ end
 
 Given(/^House has no code repos on github$/) do
   RestAssured::Double.create fullpath: '/users/house/repos',
-    content: fixture('house.json')
+    content: fixture('repos_with_no_languages.json')
 end
