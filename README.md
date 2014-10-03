@@ -10,3 +10,14 @@ Than later it occurred to me that, even though it fits the bill, this code does 
 So I put off my hacker hat and put on my engineer hat. But there was still something missing. The test description didn't justify this swap in my opinion. And so I went ahead and added the following bit to it: "Assume that this is a start of a big project with lots of features planned". Now everything seemed good.
 
 It took me over 3 hours to do that, but this time I was focused on quality rather than speed. There are tests, there is more or less meaningful commit history, there are less bugs. Oh, and it is in Ruby. Might be important one, who knows?
+
+## how to run ##
+
+    $ git clone https://github.com/artemave/unboxed-test.git
+    $ cd unboxed-test
+    $ bundle install
+    $ ./bin/fav_lang bob
+
+## run tests ##
+
+    $ bundle exec rspec && bundle exec cucumber
