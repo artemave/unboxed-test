@@ -1,3 +1,6 @@
+require 'bundler'
+Bundler.setup(:default)
+
 require_relative 'github_api'
 require_relative 'fav_lang'
 
