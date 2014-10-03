@@ -11,16 +11,19 @@ class App
 
   def execute!
     exitstatus = 0
-    username = @argv.first
 
-    data = GitHubAPI.get_user_repos username
-    language = FavLang.calculate_from_repos data
+    if username = @argv.first
+      data = GitHubAPI.get_user_repos username
+      language = FavLang.calculate_from_repos data
 
-    if language.is_a? NilLanguage
-      exitstatus = 1
-      @stderr.puts "It is hard to say..."
+      if language.is_a? NilLanguage
+        exitstatus = 1
+        @stderr.puts "It is hard to say..."
+      else
+        @stdout.puts language
+      end
     else
-      @stdout.puts language
+      @stdout.puts "Usage: #{$0} USERNAME"
     end
 
   rescue GitHubAPI::UserNotFound
